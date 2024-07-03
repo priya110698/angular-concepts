@@ -1,0 +1,23 @@
+<p>List-user: </p>
+
+<section>
+    <table border="1">
+        <thead>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Hobbies</th>
+            <th>Action</th>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let user of userList">
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.hobbies}}</td>
+                <td (click)="deleteUser(user)" class="pointer">Delete</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
