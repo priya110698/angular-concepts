@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, effect } from '@angular/core';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-list-user',
@@ -10,16 +11,18 @@ import { Component } from '@angular/core';
 })
 export class ListUserComponent {
   userList: any = [];
-  constructor() {
-    let data: any = localStorage.getItem('userList');
-    this.userList = JSON.parse(data);
+  constructor(public userService: UserService) {
+    effect(() => {
+      let data: any = localStorage.getItem('userList');
+      this.userList = JSON.parse(data);
+      if (this.userService.userList().length > this.userList?.length) {
+        this.userList = this.userService.userList();
+      }
+    });
   }
 
   deleteUser(user: any) {
-    console.log("user", user);
     this.userList = this.userList.filter((userObj: any) => userObj.id !== user.id);
-    console.log("this.userList --", this.userList);
     localStorage.setItem('userList', JSON.stringify(this.userList));
-
   }
 }
