@@ -15,10 +15,15 @@ export class ListUserComponent {
     effect(() => {
       let data: any = localStorage.getItem('userList');
       this.userList = JSON.parse(data);
-      if (this.userService.userList().length > this.userList?.length) {
-        this.userList = this.userService.userList();
+      if (this.userService.userLists().length > this.userList?.length) {
+        this.userList = this.userService.userLists();
       }
     });
+  }
+
+  ngOnInit() {
+      let data: any = localStorage.getItem('userList');
+      this.userList = JSON.parse(data);
   }
 
   deleteUser(user: any) {

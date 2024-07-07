@@ -26,20 +26,24 @@ export class AddUserComponent {
   }
 
   submitUser() {
-    let data: any = localStorage.getItem('userList');
-    let users = JSON.parse(data) ? JSON.parse(data) : [];
+    let data: any = localStorage.getItem('userList'); //Getting Prev userList from Localstorage
+    let users = JSON.parse(data) ? JSON.parse(data) : []; // UserList / First Time empty array declartion with empty array assigning
+    // User Data from user-form
+    let userCtrls = this.userform.controls;
     let user: User = {
       id: (new Date()).getMilliseconds() + Math.floor(Math.random() * 1000),
-      name: this.userform.controls['name'].value,
-      age: this.userform.controls['age'].value,
-      gender: this.userform.controls['gender'].value,
-      hobbies: this.userform.controls['hobbies'].value
+      name: userCtrls['name'].value,
+      age: userCtrls['age'].value,
+      gender: userCtrls['gender'].value,
+      hobbies: userCtrls['hobbies'].value
     };
-    users.push(user);
-    this.userService.updateUser(users);
-    localStorage.setItem('userList', JSON.stringify(users));
-    this.userform.reset();
-    alert("Added Successfully!!..")
+    // Add user in local-storage
+
+    users.push(user); // user obj pushing into exsisting array
+    this.userService.updateUser(users); // Used the same array for list users into ListUserComponent
+    localStorage.setItem('userList', JSON.stringify(users)); //Set into the local-sorage, users-array in string-format 
+    this.userform.reset(); //After added used clear the user form fields
+    alert("User Added Successfully!!..");
   }
 
 }

@@ -7,12 +7,12 @@ import { Injectable, signal } from '@angular/core';
 
 export class UserService {
 
-  public userList = signal<User[]>([]);
+  public userLists = signal<User[]>([]); //Declaring signals
 
   constructor() { }
 
   updateUser(userVal: any) {
-    this.userList.set(userVal);
+    this.userLists.set(userVal); //Setting user values into signal
   }
 }
 
