@@ -4,6 +4,7 @@
   <form [formGroup]="userform">
     <input type="text" formControlName="id" name="id" hidden>
 
+    <br /><br />
     <label>Name: </label>
     <input type="text" formControlName="name" name="name">
 
@@ -17,11 +18,23 @@
     Female: <input type="radio" formControlName="gender" value="female" name="gender">
 
     <br /><br />
-    <label>Hobbies: </label>
-    <input type="text" formControlName="hobbies" name="hobbies">
 
+    <label>Hobbies: </label> <button (click)="addHobbies()"> + </button>
+    <div formArrayName="hobbies">
+      <div *ngFor="let ctrl of hobbiesVal.controls; let i=index">
+        <input type="text" [formControlName]="i" name="hobbies"> &nbsp;
+        <button type="button" (click)="removeField(i)"> - </button>
+      </div>
+    </div>
     <br /><br />
+    
     <button (click)="submitUser()">Submit</button>
 
   </form>
 </div>
+
+
+<!-- <div (focusout)="onFocusOut($event)" (blur)="onBlur($event)">
+  <input type="text" (blur)="onInputBlur($event)" (focusout)="onInputFocusOut($event)" placeholder="First Name">
+  <input type="text" (blur)="onInputBlur($event)" (focusout)="onInputFocusOut($event)" placeholder="Last Name">
+</div> -->
