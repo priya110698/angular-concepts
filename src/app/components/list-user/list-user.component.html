@@ -1,6 +1,8 @@
-<p  class="b">List-user: </p>
+<ng-content></ng-content>
 
-<section>
+<ng-template #addUserTemplate> Add user to show the List!! Still no users are added.. </ng-template>
+
+<section *ngIf="userList.length > 0 ; else addUserTemplate">
     <table border="1">
         <thead>
             <th>Name</th>
@@ -12,11 +14,11 @@
 
         <tbody>
             <tr *ngFor="let user of userList">
-                <td>{{user.name}}</td>
-                <td>{{user.age}}</td>
-                <td>{{user.gender}}</td>
-                <td>{{user.hobbies}}</td>
-                <td (click)="deleteUser(user)" class="pointer">Delete</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.hobbies}}</td>
+                    <td (click)="deleteUser(user)" class="pointer">Delete</td>
             </tr>
         </tbody>
     </table>
