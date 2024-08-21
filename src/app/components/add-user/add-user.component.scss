@@ -1,7 +1,101 @@
-.level-1 {
-    font-size: 20px;
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.level-2 {
-    font-size: 10px;
+.form-container {
+    background: white;
+    padding: 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 30%;
+    margin: 20px auto;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.radio-group {
+    display: flex;
+
+    .radio-label {
+        width: calc(50%/2);
+    }
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group input[type="radio"] {
+    width: auto;
+    margin-right: 0.5em;
+}
+
+.form-group .radio-label {
+    margin-right: 1em;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.75em;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Styles for multiple hobbies */
+.hobbies-group input {
+    flex-grow: 1;
+}
+
+.hobbies-group button {
+    margin-left: 0.5em;
+    padding: 0.5em;
+    flex-grow: 0;
+}
+
+.hobbi-group {
+    display: flex;
+    align-items: center;
+    margin: 5px 0px;
+    input {
+        width: 70%;
+    }
+
+    button {
+        width: calc(30%/2);
+    }
 }

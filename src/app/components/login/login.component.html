@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="centered">
+        <form [formGroup]="userform">
+            <input type="text" formControlName="id" name="id" hidden>
+        
+            <label>User Name: </label>
+            <input type="text" formControlName="username" name="username">
+        
+            <label>Password: </label> 
+            <input type="password" formControlName="password" name="password">    
+
+            <button (click)="loginForm()">Submit</button>
+        </form>
+    </div>
+</div>

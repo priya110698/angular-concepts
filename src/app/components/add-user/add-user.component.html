@@ -1,34 +1,41 @@
-<ng-content></ng-content>
-
-<div>
+<div class="form-container">
+  <h2>Add User</h2>
   <form [formGroup]="userform">
     <input type="text" formControlName="id" name="id" hidden>
+    <div class="form-group">
+      <label>Name: </label>
+      <input type="text" formControlName="name" name="name">
+    </div>
 
-    <br /><br />
-    <label>Name: </label>
-    <input type="text" formControlName="name" name="name">
+    <div class="form-group">
+      <label>Age: </label>
+      <input type="number" formControlName="age" name="age">
+    </div>
 
-    <br /><br />
-    <label>Age: </label>
-    <input type="number" formControlName="age" name="age">
-
-    <br /><br />
-    <label>Gender: </label>
-    Male: <input type="radio" formControlName="gender" value="male" name="gender">
-    Female: <input type="radio" formControlName="gender" value="female" name="gender">
-
-    <br /><br />
-
-    <label>Hobbies: </label> <button (click)="addHobbies()"> + </button>
-    <div formArrayName="hobbies">
-      <div *ngFor="let ctrl of hobbiesVal.controls; let i=index">
-        <input type="text" [formControlName]="i" name="hobbies"> &nbsp;
-        <button type="button" (click)="removeField(i)"> - </button>
+    <div class="form-group">
+      <label>Gender: </label>
+      <div class="radio-group">
+        <label class="radio-label"> Male: <input type="radio" formControlName="gender" value="male" name="gender">
+        </label>
+        <label class="radio-label"> Female: <input type="radio" formControlName="gender" value="female" name="gender">
+        </label>
       </div>
     </div>
-    <br /><br />
-    
-    <button (click)="submitUser()">Submit</button>
+
+    <div class="form-group">
+      <label>Hobbies: </label>
+      <div class="hobbies-group">
+        <div formArrayName="hobbies">
+          <div *ngFor="let ctrl of hobbiesVal.controls; let i=index" class="hobbi-group">
+              <input type="text" [formControlName]="i" name="hobbies">
+              <button type="button" (click)="removeField(i)"> - </button>
+              <button type="button" (click)="addHobbies()"> + </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" (click)="submitUser()">Submit</button>
   </form>
 </div>
 

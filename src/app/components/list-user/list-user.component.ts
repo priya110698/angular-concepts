@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, effect } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-list-user',
@@ -11,7 +12,7 @@ import { UserService } from '../../services/user.service';
 })
 export class ListUserComponent {
   userList: any = [];
-  constructor(public userService: UserService) {
+  constructor(public userService: UserService, public route: ActivatedRoute) {
     effect(() => {
       let data: any = localStorage.getItem('userList');
       this.userList = JSON.parse(data);
@@ -22,8 +23,10 @@ export class ListUserComponent {
   }
 
   ngOnInit() {
-      let data: any = localStorage.getItem('userList');
-      this.userList = JSON.parse(data);
+      this.route.data.subscribe((users: any) => {
+        console.log("users", users);
+        this.userList = users.data;
+      });
   }
 
   deleteUser(user: any) {

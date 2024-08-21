@@ -30,7 +30,7 @@ export class AddUserComponent {
     let users = JSON.parse(data) ? JSON.parse(data) : []; // UserList / First Time empty array declartion with empty array assigning
     // User Data from user-form
     let userCtrls = this.userform.controls;
-    
+
     let user: User = {
       id: (new Date()).getMilliseconds() + Math.floor(Math.random() * 1000),
       name: userCtrls['name'].value,
@@ -41,7 +41,7 @@ export class AddUserComponent {
     // Add user in local-storage
 
     console.log("user Values: ", user);
-    
+
 
     users.push(user); // user obj pushing into exsisting array
     this.userService.updateUser(users); // Used the same array for list users into ListUserComponent

@@ -1,3 +1,38 @@
+section {
+    margin: 0 auto;
+    width: 45%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    text-align: left;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    padding: 12px 15px;
+}
+thead {
+    background-color: #3333339a;
+    color: #ffffff;
+}
+tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+tbody tr:last-of-type {
+    border-bottom: 2px solid #333333;
+}
 .pointer {
     cursor: pointer;
+    color: #333333;
+    text-decoration: underline;
+}
+.pointer:hover {
+    color: #005f57;
 }
