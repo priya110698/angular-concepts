@@ -1,5 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { ActivatedRouteSnapshot, MaybeAsync, Resolve, RouterStateSnapshot } from '@angular/router';
+import { MaybeAsync, Resolve, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +10,18 @@ export class UserService implements Resolve<User[]> {
 
   public userLists = signal<User[]>([]); //Declaring signals
 
-  constructor() { }
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<User[]> {
+  // 1. resolver - data processing - like data get pandradhhu.
+  constructor(private router: Router) { }
+  resolve(): MaybeAsync<any> {
     let data: any = localStorage.getItem('userList');
-    return JSON.parse(data);
+    data = JSON.parse(data);
+    if (data && data.length > 0) {
+      return data;
+    } else {
+      alert("No users found. Please add a user.");
+      this.router.navigate(['/add-user']);
+      return null;
+    }
   }
 
   updateUser(userVal: any) {

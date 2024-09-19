@@ -13,20 +13,13 @@ import { ActivatedRoute } from '@angular/router';
 export class ListUserComponent {
   userList: any = [];
   constructor(public userService: UserService, public route: ActivatedRoute) {
-    effect(() => {
-      let data: any = localStorage.getItem('userList');
-      this.userList = JSON.parse(data);
-      if (this.userService.userLists().length > this.userList?.length) {
-        this.userList = this.userService.userLists();
-      }
-    });
   }
 
   ngOnInit() {
-      this.route.data.subscribe((users: any) => {
-        console.log("users", users);
-        this.userList = users.data;
-      });
+    this.route.data.subscribe((users: any) => {
+      console.log("users", users);
+      this.userList = users.data;
+    });
   }
 
   deleteUser(user: any) {
