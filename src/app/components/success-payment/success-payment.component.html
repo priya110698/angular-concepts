@@ -1,0 +1,6 @@
+<br />
+<div class="text-center mt-10 b w-100" *ngIf="amnt >= 100000">You have paid {{amnt}} successfully!!</div>
+
+<div class="text-center mt-10 b w-100" *ngIf="payment && !amnt">Successfully paid!!</div>
+
+<div class="text-center mt-10 b w-100" *ngIf="!payment">You haven't made any transactions.</div>

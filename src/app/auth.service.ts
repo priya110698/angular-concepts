@@ -6,13 +6,13 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  access = 'all';
+  access = 'Admin';
 
   constructor(public router: Router) { }
 
   loginUser(user: boolean) {
     if(user) {
-      return this.access = 'all';
+      return this.access = 'Admin';
     }
     return this.access = '';
   }

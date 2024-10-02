@@ -1,5 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { MaybeAsync, Resolve, Router } from '@angular/router';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,12 @@ export class UserService implements Resolve<User[]> {
 
   updateUser(userVal: any) {
     this.userLists.set(userVal); //Setting user values into signal
+  }
+
+  userList() {
+    let data: any = localStorage.getItem('userList'); //Getting Prev userList from Localstorage
+    let users = JSON.parse(data) ? JSON.parse(data) : []; // UserList / First Time empty array declartion with empty array assigning
+    return of(users);
   }
 }
 

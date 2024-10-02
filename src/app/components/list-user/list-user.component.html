@@ -14,11 +14,14 @@
 
         <tbody>
             <tr *ngFor="let user of userList">
-                    <td>{{user.name}}</td>
-                    <td>{{user.age}}</td>
-                    <td>{{user.gender}}</td>
-                    <td>{{user.hobbies}}</td>
-                    <td (click)="deleteUser(user)" class="pointer">Delete</td>
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.hobbies}}</td>
+                <td>
+                    <button (click)="deleteUser(user)" class="pointer">Delete</button> &nbsp;
+                    <button (click)="editUser(user)" class="pointer">Edit</button>
+                </td>
             </tr>
         </tbody>
     </table>
