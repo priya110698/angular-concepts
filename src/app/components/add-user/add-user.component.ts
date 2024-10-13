@@ -4,12 +4,13 @@ import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Va
 import { User, UserService } from '../../services/user.service';
 import Swal from 'sweetalert2';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UppercaseDirective } from '../../directives/upper-case.directive';
 
 
 @Component({
   selector: 'app-add-user',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, UppercaseDirective],
   templateUrl: './add-user.component.html',
   styleUrl: './add-user.component.scss'
 })

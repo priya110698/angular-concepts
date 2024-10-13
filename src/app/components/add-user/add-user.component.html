@@ -1,10 +1,10 @@
 <div class="form-container">
   <h2>Add User</h2>
   <form [formGroup]="userform">
-    <input type="text" formControlName="id" name="id" hidden>
+    <input type="text" formControlName="id" name="id" *ngIf="false">
     <div class="form-group">
       <label>Name: </label>
-      <input type="text" formControlName="name" name="name">
+      <input type="text" formControlName="name" name="name" appUppercase>
     </div>
 
     <div class="form-group">
@@ -27,7 +27,7 @@
       <div class="hobbies-group">
         <div formArrayName="hobbies">
           <div *ngFor="let ctrl of hobbiesVal.controls; let i=index" class="hobbi-group">
-              <input type="text" [formControlName]="i" name="hobbies">
+              <input type="text" [formControlName]="i" name="hobbies" appUppercase>
               <button type="button" (click)="removeField(i)"> - </button>
               <button type="button" (click)="addHobbies()"> + </button>
           </div>
