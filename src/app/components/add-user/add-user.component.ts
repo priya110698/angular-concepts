@@ -12,7 +12,8 @@ import { UppercaseDirective } from '../../directives/upper-case.directive';
   standalone: true,
   imports: [CommonModule, FormsModule, ReactiveFormsModule, UppercaseDirective],
   templateUrl: './add-user.component.html',
-  styleUrl: './add-user.component.scss'
+  styleUrl: './add-user.component.scss',
+  providers: [UserService]
 })
 export class AddUserComponent {
   userform: FormGroup;

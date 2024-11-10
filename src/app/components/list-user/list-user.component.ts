@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { UserService } from '../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -12,8 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ListUserComponent {
   userList: any = [];
-  constructor(public userService: UserService, public route: ActivatedRoute, public router: Router) {
-  }
+  constructor(public route: ActivatedRoute, public router: Router) {}
 
   ngOnInit() {
     this.route.data.subscribe((users: any) => {

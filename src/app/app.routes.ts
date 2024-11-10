@@ -17,7 +17,7 @@ export const routes: Routes = [
         component: LayoutComponent,
         children: [
             { path: 'add-user', component: AddUserComponent, canActivate: [userGuardCanActivate], canDeactivate: [userDeactivateGuard], data: { role: Role.Admin } },
-            { path: 'list-user', component: ListUserComponent, resolve: { data: UserService } },
+            { path: 'list-user', component: ListUserComponent, resolve: { data: UserService },  providers: [UserService] },
             // { path: 'edit-user/:id', component: AddUserComponent, canActivate: [userGuardCanActivate], canDeactivate: [userDeactivateGuard] }, //Using Route params
             { path: 'edit-user', component: AddUserComponent, canActivate: [userGuardCanActivate], canDeactivate: [userDeactivateGuard], data: { role: Role.Admin } }, //Using State
             { path: 'success', component: SuccessPaymentComponent },
