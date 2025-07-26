@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CamelCasePipe } from '../../pipes/camel-case.pipe';
 
 @Component({
   selector: 'app-list-user',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CamelCasePipe],
   templateUrl: './list-user.component.html',
   styleUrl: './list-user.component.scss'
 })

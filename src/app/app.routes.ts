@@ -8,6 +8,7 @@ import { userDeactivateGuard, userGuardCanActivate } from './user.guard';
 import { PaymentComponent } from './components/payment/payment.component';
 import { SuccessPaymentComponent } from './components/success-payment/success-payment.component';
 import { Role } from './enums/role.enum';
+import { NgpipeComponent } from './components/ngpipe/ngpipe.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full', },
@@ -22,6 +23,7 @@ export const routes: Routes = [
             { path: 'edit-user', component: AddUserComponent, canActivate: [userGuardCanActivate], canDeactivate: [userDeactivateGuard], data: { role: Role.Admin } }, //Using State
             { path: 'success', component: SuccessPaymentComponent },
             { path: 'payment', component: PaymentComponent },
+            { path: 'pipe', component: NgpipeComponent },
         ]
     }
 ];

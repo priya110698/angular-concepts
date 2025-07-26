@@ -1,0 +1,59 @@
+
+  <div class="container">
+    <h1>Built-in Pipes</h1>
+    <p>Angular comes with several built-in pipes for common transformations.</p>
+    
+    <section class="pipe-section">
+      <h2>Data Formatting Pipes</h2>
+      <p>These are used to format data like strings, dates, and numbers.</p>
+      
+      <div class="pipe">
+        <h3>Uppercase</h3>
+        <p><strong>Description:</strong> Converts text to uppercase.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ 'hello' | uppercase }} → {{ 'hello' | uppercase }}</code>
+      </div>
+
+      <div class="pipe">
+        <h3>Lowercase</h3>
+        <p><strong>Description:</strong> Converts text to lowercase.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ 'HELLO' | lowercase }} → hello</code>
+      </div>
+
+      <div class="pipe">
+        <h3>Titlecase</h3>
+        <p><strong>Description:</strong> Capitalizes the first letter of each word.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ 'angular pipes' | titlecase }} → Angular Pipes</code>
+      </div>
+
+      <div class="pipe">
+        <h3>Date</h3>
+        <p><strong>Description:</strong> Formats dates based on predefined or custom formats.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ today | date:'shortDate' }} → 24/12/2024</code>
+      </div>
+
+      <div class="pipe">
+        <h3>Currency</h3>
+        <p><strong>Description:</strong> Formats numbers as currency.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ 1234 | currency:'USD' }} → $1,234.00</code>
+      </div>
+
+      <div class="pipe">
+        <h3>Decimal</h3>
+        <p><strong>Description:</strong> Formats numbers with decimal points.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ 1234.567 | number:'1.2-2' }} → 1,234.57</code>
+      </div>
+
+      <div class="pipe">
+        <h3>Percent</h3>
+        <p><strong>Description:</strong> Converts numbers to percentages.</p>
+        <p><strong>Example:</strong></p>
+        <code>{{ 0.25 | percent }} → 25%</code>
+      </div>
+    </section>
+  </div>
