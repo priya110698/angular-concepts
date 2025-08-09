@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-declare var Razorpay: any;
+declare var Rpay: any;
 @Component({
   selector: 'app-payment',
   standalone: true,
@@ -40,7 +40,7 @@ export class PaymentComponent {
       }
     };
 
-    const rzp1 = new Razorpay(options);
+    const rzp1 = new Rpay(options);
     rzp1.open();
   }
 

@@ -5,6 +5,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { filter } from 'rxjs';
+import { LocalNotifications } from '@capacitor/local-notifications';
 
 @Component({
   selector: 'app-root',
@@ -25,5 +26,9 @@ export class AppComponent {
       this.showHeader = !event.url.includes('/login');
     });
   }
-  
+
+  async ngOnInit() {
+    await LocalNotifications.requestPermissions();
+  }
+
 }
