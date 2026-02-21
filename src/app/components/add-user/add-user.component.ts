@@ -45,7 +45,11 @@ export class AddUserComponent {
       name: ['', Validators.required],
       age: ['', Validators.required],
       gender: ['', Validators.required],
-      hobbies: this.formBuilder.array([''])
+      hobbies: this.formBuilder.array(['']),
+      nationality: ['', Validators.required],
+      maritalStatus: ['', Validators.required],
+      contactInfo: ['', Validators.required],
+      languages: ['', Validators.required],
     });
 
     this.userform.valueChanges.subscribe((valueChange) => {
@@ -65,14 +69,14 @@ export class AddUserComponent {
 
     // const navigation = this.router.getCurrentNavigation()?.extras?.state;
     // userId = navigation?.['user_id'];
-    
-    
+
+
 
     this.userService.userList().subscribe((usersList: any) => {
       if (usersList) {
         let userObjVal = usersList.filter((userObj: any) => userObj.id === +userId);
         userObjVal = userObjVal[0];
-        this.userform.setValue({
+        this.userform.patchValue({
           id: userObjVal.id,
           name: userObjVal.name,
           age: userObjVal.age,
@@ -97,7 +101,11 @@ export class AddUserComponent {
       name: userCtrls['name'].value,
       age: userCtrls['age'].value,
       gender: userCtrls['gender'].value,
-      hobbies: userCtrls['hobbies'].value
+      hobbies: userCtrls['hobbies'].value,
+      nationality: userCtrls['nationality'].value,
+      maritalStatus: userCtrls['maritalStatus'].value,
+      contactInfo: userCtrls['contactInfo'].value,
+      languages: userCtrls['languages'].value,
     };
     if (this.exsistingUserId) {
       user['id'] = this.exsistingUserId;

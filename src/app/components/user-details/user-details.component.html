@@ -1,0 +1,83 @@
+<div class="container">
+
+  <button class="back-btn" (click)="onBackClick()">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5"
+      stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 2L4 7l5 5" />
+    </svg>
+    Back
+  </button>
+
+  <div class="header">
+    <div class="avatar">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#c4a882" stroke-width="1.5"
+        stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="8" r="4" />
+        <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+      </svg>
+    </div>
+    <div class="header-text">
+      <h1 class="upper-case">{{userData.name}}</h1>
+      <span>Profile</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="section-title">Personal</div>
+
+    <div class="form-group">
+      <label>Name</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.name}}</span>
+    </div>
+
+    <div class="form-group">
+      <label>Age</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.age}}</span>
+    </div>
+
+    <div class="form-group">
+      <label>Gender</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.gender}}</span>
+    </div>
+
+    <div class="form-group">
+      <label>Nationality</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.nationality}}</span>
+    </div>
+
+    <div class="form-group">
+      <label>Marital Status</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.maritalStatus}}</span>
+    </div>
+
+    <div class="section-title">Contact</div>
+
+    <div class="form-group">
+      <label>Email Address</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.contactInfo}}</span>
+    </div>
+
+    <div class="section-title">More</div>
+
+    <div class="form-group">
+      <label>Languages Known</label>
+      <span class="value">—</span>
+      <span class="value">{{userData.languages}}</span>
+    </div>
+
+    <div class="form-group">
+      <label>Hobbies</label>
+      <span class="value">—</span>
+      @for (item of userData.hobbies; track $index) {
+      <span class="value">{{item}}</span>
+      }
+    </div>
+
+  </div>
+</div>

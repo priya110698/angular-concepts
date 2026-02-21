@@ -1,28 +1,32 @@
-<ng-content></ng-content>
+<ng-content *ngIf="!userDetails">
+    <ng-template #addUserTemplate> Add user to show the List!! Still no users are added.. </ng-template>
 
-<ng-template #addUserTemplate> Add user to show the List!! Still no users are added.. </ng-template>
+    <section *ngIf="userList.length > 0 ; else addUserTemplate">
+        <table border="1">
+            <thead>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Action</th>
+            </thead>
 
-<section *ngIf="userList.length > 0 ; else addUserTemplate">
-    <table border="1">
-        <thead>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Gender</th>
-            <th>Hobbies</th>
-            <th>Action</th>
-        </thead>
-
-        <tbody>
-            <tr *ngFor="let user of userList">
-                <td>{{user.name}}</td>
-                <td>{{user.age}}</td>
-                <td>{{user.gender}}</td>
-                <td>{{user.hobbies}}</td>
-                <td>
-                    <button (click)="deleteUser(user)" class="pointer">Delete</button> &nbsp;
-                    <button (click)="editUser(user)" class="pointer">Edit</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+            <tbody>
+                <tr *ngFor="let user of userList">
+                    <td>{{user.name}}</td>
+                    <td>{{user.age}}</td>
+                    <td>{{user.gender}}</td>
+                    <td>{{user.hobbies}}</td>
+                    <td>
+                        <button (click)="deleteUser(user)" class="pointer">Delete</button> &nbsp;
+                        <button (click)="editUser(user)" class="pointer">Edit</button> &nbsp;
+                        <button (click)="more(user)" class="pointer">More Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</ng-content>
+<ng-content *ngIf="userDetails">
+    <app-user-details [userData] = "userDetailsData"  (backClicked)="userDetails = false"></app-user-details>
+</ng-content>

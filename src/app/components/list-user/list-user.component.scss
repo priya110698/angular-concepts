@@ -1,37 +1,181 @@
-section {
-    margin: 0 auto;
-    width: 45%;
+/* ===== Google Font Import (add to index.html) =====
+   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+================================================== */
+
+/* ===== Global ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+:root {
+  --bg: #0f0e0d;
+  --card: #181614;
+  --border: #2a2622;
+  --accent: #e8a45a;
+  --text: #f0ebe4;
+  --muted: #9e9189;
+  --label: #c4bdb6;
+  --danger: #e05c4e;
+  --edit-color: #a0b4c8;
+}
+
+body {
+  background: var(--bg);
+  min-height: 100vh;
+  font-family: 'Sora', sans-serif;
+  color: var(--text);
+}
+
+/* ===== Empty State ===== */
+.empty-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  font-style: italic;
+  background: var(--card);
+  border: 1px dashed var(--border);
+  border-radius: 4px;
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+/* ===== Section / Table Wrapper ===== */
+section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 2rem;
+  animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Table ===== */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 1em;
-    font-family: Arial, sans-serif;
-    text-align: left;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  border-collapse: collapse;
+  border: none;
 }
-th, td {
-    padding: 12px 15px;
-}
+
 thead {
-    background-color: #3333339a;
-    color: #ffffff;
+  background: #2a2520;
 }
+
+thead th {
+  padding: 0.85rem 1.25rem;
+  text-align: left;
+  font-size: 0.63rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e8e0d8;                /* ✅ bright cream — fully visible */
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
 tbody tr {
-    border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+  animation: fadeIn 0.4s ease both;
 }
-tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
+
+tbody tr:last-child {
+  border-bottom: none;
 }
-tbody tr:last-of-type {
-    border-bottom: 2px solid #333333;
+
+tbody tr:hover {
+  background: #2e2820;
 }
+
+tbody tr:hover td {
+  color: #ffffff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+tbody tr:nth-child(1) { animation-delay: 0.05s; }
+tbody tr:nth-child(2) { animation-delay: 0.10s; }
+tbody tr:nth-child(3) { animation-delay: 0.15s; }
+tbody tr:nth-child(4) { animation-delay: 0.20s; }
+tbody tr:nth-child(5) { animation-delay: 0.25s; }
+
+tbody td {
+  padding: 1rem 1.25rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text);            /* ✅ bright readable text */
+  vertical-align: middle;
+}
+
+/* ===== Action Buttons ===== */
 .pointer {
-    cursor: pointer;
-    color: #333333;
+  cursor: pointer;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.1s;
+  display: inline-block;
+  margin-bottom: 0.35rem;
 }
-.pointer:hover {
-    color: #eceeee;
+
+.pointer:active {
+  transform: scale(0.97);
+}
+
+/* Delete — red tint */
+button.pointer:nth-of-type(1) {
+  background: rgba(224, 92, 78, 0.1);
+  border-color: rgba(224, 92, 78, 0.4);
+  color: var(--danger);          /* ✅ visible red */
+}
+
+button.pointer:nth-of-type(1):hover {
+  background: var(--danger);
+  color: #fff;
+  border-color: var(--danger);
+}
+
+/* Edit — blue-grey tint */
+button.pointer:nth-of-type(2) {
+  background: rgba(160, 180, 200, 0.08);
+  border-color: rgba(160, 180, 200, 0.3);
+  color: var(--edit-color);      /* ✅ visible blue-grey */
+}
+
+button.pointer:nth-of-type(2):hover {
+  background: rgba(160, 180, 200, 0.2);
+  color: #fff;
+  border-color: var(--edit-color);
+}
+
+/* More Details — amber accent */
+button.pointer:nth-of-type(3) {
+  background: rgba(232, 164, 90, 0.1);
+  border-color: rgba(232, 164, 90, 0.35);
+  color: var(--accent);          /* ✅ visible amber */
+}
+
+button.pointer:nth-of-type(3):hover {
+  background: var(--accent);
+  color: #111;
+  border-color: var(--accent);
 }

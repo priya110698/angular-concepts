@@ -42,4 +42,8 @@ export interface User {
   age: number;
   hobbies: String;
   gender: String;
+  nationality: String;
+  maritalStatus: String;
+  contactInfo: String;
+  languages: String;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { ListUserComponent } from './components/list-user/list-user.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
@@ -15,10 +15,14 @@ import { LocalNotifications } from '@capacitor/local-notifications';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  @Input() name: any;
+
+
+
+
   title = 'list-user';
-
   showHeader = false;
-
+  
   constructor(public router: Router) {
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
