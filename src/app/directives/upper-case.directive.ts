@@ -1,16 +1,16 @@
-import { Directive, HostListener, ElementRef } from '@angular/core';
+import { Directive, ElementRef, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[appUppercase]', // The directive will be used as an attribute
+  selector: '[appUppercase]',
   standalone: true
 })
 export class UppercaseDirective {
+  @HostBinding('style.text-transform') textTransform = 'uppercase';
 
-  constructor(private el: ElementRef) {}
+  constructor(private readonly el: ElementRef<HTMLInputElement>) {}
 
-  // Listen to the 'input' event on the element
-  @HostListener('input', ['$event']) onInputChange(event: any) {
-    const input = event.target.value;
-    this.el.nativeElement.value = input.toUpperCase();
+  @HostListener('input', ['$event.target.value'])
+  onInputChange(value: string): void {
+    this.el.nativeElement.value = value.toUpperCase();
   }
 }
