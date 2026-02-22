@@ -2,3 +2,25 @@
   display: block;
   padding: 16px;
 }
+
+.bulk-actions,
+.quick-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+button,
+a {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d0d8e8;
+  background: #fff;
+  text-decoration: none;
+  color: #1e3a8a;
+}
+
+.bulk-actions button:first-child {
+  background: #e0ecff;
+}
