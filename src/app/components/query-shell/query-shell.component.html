@@ -1,0 +1,21 @@
+<section class="shell">
+    <h3>Inside child component template (View queries)</h3>
+
+    <input #viewInput value="Value from &#64;ViewChild" readonly />
+
+    <ul>
+        <li #viewItem>View item A</li>
+        <li #viewItem>View item B</li>
+        <li #viewItem>View item C</li>
+    </ul>
+
+    <h3>Projected from parent (Content queries)</h3>
+    <ng-content></ng-content>
+
+    <div class="result">
+        <p><strong>&#64;ViewChild:</strong> {{ summary.viewChild }}</p>
+        <p><strong>&#64;ViewChildren count:</strong> {{ summary.viewChildrenCount }}</p>
+        <p><strong>&#64;ContentChild:</strong> {{ summary.contentChild }}</p>
+        <p><strong>&#64;ContentChildren count:</strong> {{ summary.contentChildrenCount }}</p>
+    </div>
+</section>

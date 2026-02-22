@@ -11,11 +11,13 @@ import { Role } from './enums/role.enum';
 import { NgpipeComponent } from './components/ngpipe/ngpipe.component';
 import { HomeComponent } from './components/home/home.component';
 import { ClockComponent } from './components/clock/clock.component';
+import { QueryDecoratorsDemoComponent } from './components/query-decorators-demo/query-decorators-demo.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'clock', component: ClockComponent },
+    { path: 'query-decorators', component: QueryDecoratorsDemoComponent },
     { path: 'login', component: LoginComponent },
     {
         path: '',
