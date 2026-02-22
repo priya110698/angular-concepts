@@ -15,6 +15,9 @@ export class HomeComponent {
     if (val == 'clockBack') {
       this.router.navigate(['/clock']);
     }
+    if (val == 'queryDecorators') {
+      this.router.navigate(['/query-decorators']);
+    }
     if (val == 'Admin') {
       this.router.navigate(['/login']);
     }
