@@ -1,17 +1,38 @@
 .shell {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  margin-top: 16px;
+  border: 1px solid #d6deeb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+  background: #fff;
 }
 
-ul {
-  margin-top: 8px;
+.toolbar {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+
+input,
+button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #c5cfdf;
+}
+
+button {
+  background: #f2f6ff;
+}
+
+.projected {
+  border-top: 1px dashed #d6deeb;
+  margin-top: 1rem;
+  padding-top: 1rem;
 }
 
 .result {
-  margin-top: 16px;
-  padding: 12px;
-  background: #f6f8ff;
-  border-radius: 6px;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  background: #f8faff;
 }

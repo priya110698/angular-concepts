@@ -1,8 +1,48 @@
-<h2>Query Decorators Demo</h2>
-<p>This page demonstrates &#64;ViewChild, &#64;ViewChildren, &#64;ContentChild and &#64;ContentChildren.</p>
+<h2>Angular Query Decorators - User, Role, and Permission Management</h2>
+<p>
+  Real admin screens showing practical usage of <code>&#64;ViewChild</code>, <code>&#64;ViewChildren</code>,
+  <code>&#64;ContentChild</code>, and <code>&#64;ContentChildren</code>.
+</p>
 
-<app-query-shell>
-    <h4 #projectedTitle>Projected heading from parent</h4>
-    <p #projectedItem>Projected item 1</p>
-    <p #projectedItem>Projected item 2</p>
-</app-query-shell>
+<section class="screen-group">
+  <h3>Role Management Screen</h3>
+  <app-query-shell
+    panelTitle="Role management workspace"
+    panelDescription="Manage role catalog, assign default role bundles, and maintain review workflows."
+    searchPlaceholder="Search roles by name"
+    [rowActions]="['Edit role', 'Clone role', 'Archive role']"
+  >
+    <div class="bulk-actions">
+      <button #bulkActionPrimary type="button">Assign selected roles to users</button>
+      <button type="button">Export role matrix</button>
+    </div>
+
+    <div class="quick-links">
+      <a #quickLink href="javascript:void(0)">Unassigned roles</a>
+      <a #quickLink href="javascript:void(0)">High-risk roles</a>
+      <a #quickLink href="javascript:void(0)">Recently changed roles</a>
+    </div>
+  </app-query-shell>
+</section>
+
+<section class="screen-group">
+  <h3>Permission Management Screen</h3>
+  <app-query-shell
+    panelTitle="Permission management workspace"
+    panelDescription="Review API and UI permissions, validate policy conflicts, and publish access updates."
+    searchPlaceholder="Search permissions by module or action"
+    [rowActions]="['Edit permission', 'Map to role', 'Disable permission']"
+  >
+    <div class="bulk-actions">
+      <button #bulkActionPrimary type="button">Apply policy to selected permissions</button>
+      <button type="button">Download audit report</button>
+    </div>
+
+    <div class="quick-links">
+      <a #quickLink href="javascript:void(0)">Permission conflicts</a>
+      <a #quickLink href="javascript:void(0)">Pending approvals</a>
+      <a #quickLink href="javascript:void(0)">Recently revoked</a>
+      <a #quickLink href="javascript:void(0)">Unused permissions</a>
+    </div>
+  </app-query-shell>
+</section>

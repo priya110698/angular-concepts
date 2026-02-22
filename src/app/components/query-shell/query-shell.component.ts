@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChild, ContentChildren, ElementRef, Input, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,11 +9,16 @@ import { CommonModule } from '@angular/common';
   styleUrl: './query-shell.component.scss'
 })
 export class QueryShellComponent implements AfterViewInit, AfterContentInit {
-  @ViewChild('viewInput') viewInput?: ElementRef<HTMLInputElement>;
-  @ViewChildren('viewItem') viewItems?: QueryList<ElementRef<HTMLLIElement>>;
+  @Input() panelTitle = 'User management workspace';
+  @Input() panelDescription = 'Real-world query decorators usage inside an admin screen.';
+  @Input() searchPlaceholder = 'Search records';
+  @Input() rowActions: string[] = ['View', 'Edit', 'Deactivate'];
 
-  @ContentChild('projectedTitle') projectedTitle?: ElementRef<HTMLElement>;
-  @ContentChildren('projectedItem', { descendants: true }) projectedItems?: QueryList<ElementRef<HTMLElement>>;
+  @ViewChild('searchInput') searchInput?: ElementRef<HTMLInputElement>;
+  @ViewChildren('rowActionButton') rowActionButtons?: QueryList<ElementRef<HTMLButtonElement>>;
+
+  @ContentChild('bulkActionPrimary') bulkActionPrimary?: ElementRef<HTMLButtonElement>;
+  @ContentChildren('quickLink', { descendants: true }) quickLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
 
   summary = {
     viewChild: '',
@@ -23,12 +28,12 @@ export class QueryShellComponent implements AfterViewInit, AfterContentInit {
   };
 
   ngAfterViewInit(): void {
-    this.summary.viewChild = this.viewInput?.nativeElement.value ?? 'Not found';
-    this.summary.viewChildrenCount = this.viewItems?.length ?? 0;
+    this.summary.viewChild = this.searchInput?.nativeElement.placeholder ?? 'Search input unavailable';
+    this.summary.viewChildrenCount = this.rowActionButtons?.length ?? 0;
   }
 
   ngAfterContentInit(): void {
-    this.summary.contentChild = this.projectedTitle?.nativeElement.textContent?.trim() ?? 'Not found';
-    this.summary.contentChildrenCount = this.projectedItems?.length ?? 0;
+    this.summary.contentChild = this.bulkActionPrimary?.nativeElement.textContent?.trim() ?? 'Primary bulk action unavailable';
+    this.summary.contentChildrenCount = this.quickLinks?.length ?? 0;
   }
 }

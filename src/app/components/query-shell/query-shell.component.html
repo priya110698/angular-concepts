@@ -1,21 +1,29 @@
 <section class="shell">
-    <h3>Inside child component template (View queries)</h3>
+  <header>
+    <h3>{{ panelTitle }}</h3>
+    <p>
+      {{ panelDescription }}
+      Uses <code>&#64;ViewChild</code> and <code>&#64;ViewChildren</code> for internal controls.
+    </p>
+  </header>
 
-    <input #viewInput value="Value from &#64;ViewChild" readonly />
+  <div class="toolbar">
+    <input #searchInput type="search" [placeholder]="searchPlaceholder" readonly />
+    <button #rowActionButton type="button" *ngFor="let action of rowActions">{{ action }}</button>
+  </div>
 
-    <ul>
-        <li #viewItem>View item A</li>
-        <li #viewItem>View item B</li>
-        <li #viewItem>View item C</li>
-    </ul>
-
-    <h3>Projected from parent (Content queries)</h3>
+  <section class="projected">
+    <h4>Projected section from parent screen</h4>
+    <p>
+      This area is queried with <code>&#64;ContentChild</code> and <code>&#64;ContentChildren</code>.
+    </p>
     <ng-content></ng-content>
+  </section>
 
-    <div class="result">
-        <p><strong>&#64;ViewChild:</strong> {{ summary.viewChild }}</p>
-        <p><strong>&#64;ViewChildren count:</strong> {{ summary.viewChildrenCount }}</p>
-        <p><strong>&#64;ContentChild:</strong> {{ summary.contentChild }}</p>
-        <p><strong>&#64;ContentChildren count:</strong> {{ summary.contentChildrenCount }}</p>
-    </div>
+  <aside class="result">
+    <p><strong>&#64;ViewChild</strong> detected search placeholder: <em>{{ summary.viewChild }}</em></p>
+    <p><strong>&#64;ViewChildren</strong> detected row-level actions: <em>{{ summary.viewChildrenCount }}</em></p>
+    <p><strong>&#64;ContentChild</strong> detected primary bulk action: <em>{{ summary.contentChild }}</em></p>
+    <p><strong>&#64;ContentChildren</strong> detected quick links: <em>{{ summary.contentChildrenCount }}</em></p>
+  </aside>
 </section>
