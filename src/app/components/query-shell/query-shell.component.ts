@@ -9,11 +9,11 @@ import { CommonModule } from '@angular/common';
   styleUrl: './query-shell.component.scss'
 })
 export class QueryShellComponent implements AfterViewInit, AfterContentInit {
-  @ViewChild('viewInput') viewInput?: ElementRef<HTMLInputElement>;
-  @ViewChildren('viewItem') viewItems?: QueryList<ElementRef<HTMLLIElement>>;
+  @ViewChild('searchInput') searchInput?: ElementRef<HTMLInputElement>;
+  @ViewChildren('rowActionButton') rowActionButtons?: QueryList<ElementRef<HTMLButtonElement>>;
 
-  @ContentChild('projectedTitle') projectedTitle?: ElementRef<HTMLElement>;
-  @ContentChildren('projectedItem', { descendants: true }) projectedItems?: QueryList<ElementRef<HTMLElement>>;
+  @ContentChild('bulkActionPrimary') bulkActionPrimary?: ElementRef<HTMLButtonElement>;
+  @ContentChildren('quickLink', { descendants: true }) quickLinks?: QueryList<ElementRef<HTMLAnchorElement>>;
 
   summary = {
     viewChild: '',
@@ -23,12 +23,12 @@ export class QueryShellComponent implements AfterViewInit, AfterContentInit {
   };
 
   ngAfterViewInit(): void {
-    this.summary.viewChild = this.viewInput?.nativeElement.value ?? 'Not found';
-    this.summary.viewChildrenCount = this.viewItems?.length ?? 0;
+    this.summary.viewChild = this.searchInput?.nativeElement.placeholder ?? 'Search input unavailable';
+    this.summary.viewChildrenCount = this.rowActionButtons?.length ?? 0;
   }
 
   ngAfterContentInit(): void {
-    this.summary.contentChild = this.projectedTitle?.nativeElement.textContent?.trim() ?? 'Not found';
-    this.summary.contentChildrenCount = this.projectedItems?.length ?? 0;
+    this.summary.contentChild = this.bulkActionPrimary?.nativeElement.textContent?.trim() ?? 'Primary bulk action unavailable';
+    this.summary.contentChildrenCount = this.quickLinks?.length ?? 0;
   }
 }

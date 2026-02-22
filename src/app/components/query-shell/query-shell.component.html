@@ -1,21 +1,28 @@
 <section class="shell">
-    <h3>Inside child component template (View queries)</h3>
+  <header>
+    <h3>User directory panel (view queries)</h3>
+    <p>
+      A realistic user-management widget that reads internal template elements with
+      <code>&#64;ViewChild</code> and <code>&#64;ViewChildren</code>.
+    </p>
+  </header>
 
-    <input #viewInput value="Value from &#64;ViewChild" readonly />
+  <div class="toolbar">
+    <input #searchInput type="search" placeholder="Search users by name or email" readonly />
+    <button #rowActionButton type="button">Edit user</button>
+    <button #rowActionButton type="button">Suspend user</button>
+    <button #rowActionButton type="button">Reset password</button>
+  </div>
 
-    <ul>
-        <li #viewItem>View item A</li>
-        <li #viewItem>View item B</li>
-        <li #viewItem>View item C</li>
-    </ul>
-
-    <h3>Projected from parent (Content queries)</h3>
+  <section class="projected">
+    <h3>Projected bulk actions and links (content queries)</h3>
     <ng-content></ng-content>
+  </section>
 
-    <div class="result">
-        <p><strong>&#64;ViewChild:</strong> {{ summary.viewChild }}</p>
-        <p><strong>&#64;ViewChildren count:</strong> {{ summary.viewChildrenCount }}</p>
-        <p><strong>&#64;ContentChild:</strong> {{ summary.contentChild }}</p>
-        <p><strong>&#64;ContentChildren count:</strong> {{ summary.contentChildrenCount }}</p>
-    </div>
+  <aside class="result">
+    <p><strong>&#64;ViewChild</strong> detected search placeholder: <em>{{ summary.viewChild }}</em></p>
+    <p><strong>&#64;ViewChildren</strong> detected row-level actions: <em>{{ summary.viewChildrenCount }}</em></p>
+    <p><strong>&#64;ContentChild</strong> detected primary bulk action: <em>{{ summary.contentChild }}</em></p>
+    <p><strong>&#64;ContentChildren</strong> detected quick links: <em>{{ summary.contentChildrenCount }}</em></p>
+  </aside>
 </section>
